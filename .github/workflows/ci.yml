@@ -1,0 +1,40 @@
+name: Validate Storybook
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: yakosasam797/parya.designsystem.code
+          path: parya.designsystem.code
+      - uses: actions/checkout@v4
+        with:
+          path: parya.designsystem.storybook
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: |
+            parya.designsystem.code/package-lock.json
+            parya.designsystem.storybook/package-lock.json
+      - run: npm ci
+        working-directory: parya.designsystem.code
+      - run: npm run build
+        working-directory: parya.designsystem.code
+      - run: npm ci
+        working-directory: parya.designsystem.storybook
+      - run: npm run typecheck && npm run build
+        working-directory: parya.designsystem.storybook
+      - run: npx playwright install --with-deps chromium
+        working-directory: parya.designsystem.storybook
+      - run: npm test
+        working-directory: parya.designsystem.storybook
+      - run: npm audit --audit-level=high
+        working-directory: parya.designsystem.storybook
+      - uses: actions/upload-artifact@v4
+        with:
+          name: storybook-review-build
+          path: parya.designsystem.storybook/storybook-static

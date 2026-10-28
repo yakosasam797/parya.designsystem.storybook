@@ -1,0 +1,11 @@
+import type {Meta,StoryObj} from '@storybook/react-vite';
+import type {ComponentType} from 'react';
+import {useArgs} from 'storybook/preview-api';
+import * as UI from '@parya/design-system';
+import {examples} from '@parya/design-system/examples';
+const example=examples.find(e=>e.name==="VisuallyHidden")!;
+
+const meta={title:"Primitives/VisuallyHidden",tags:['autodocs'],argTypes:{"children":{"description":"ReactNode","table":{"type":{"summary":"ReactNode"}},"control":false}},parameters:{controls:{disable:true},docs:{source:{code:example.code,language:'tsx'},description:{component:"Deprecated compatibility for frozen historical previews. For new work use a semantic element with the public pt-visually-hidden utility class. Screen-reader-only text (.pt-visually-hidden): a 1px clipped box anchored to its containing block's top-left, so hidden text inside scrolling tables, boards and matrices never grows the document.\n\nExperimental. See the documentation website for the full API and Paper guidance."}}}} satisfies Meta;
+export default meta;
+type Story=StoryObj<typeof meta>;
+export const Default:Story={render:()=> <example.Demo/>};

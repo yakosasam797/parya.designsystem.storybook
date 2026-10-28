@@ -1,0 +1,12 @@
+import type {Meta,StoryObj} from '@storybook/react-vite';
+import type {ComponentType} from 'react';
+import {useArgs} from 'storybook/preview-api';
+import * as UI from '@parya/design-system';
+import {examples} from '@parya/design-system/examples';
+const example=examples.find(e=>e.name==="Meter")!;
+const Component=UI.Meter as unknown as ComponentType<Record<string,unknown>>;
+function ControlledStory(){const [args,update]=useArgs();return <Component {...args} onValueChange={(value:unknown)=>update({value})} onCheckedChange={(checked:boolean)=>update({checked})} onCountryCodeChange={(countryCode:string)=>update({countryCode})} onPageChange={(page:number)=>update({page})}/>}
+const meta={title:"Primitives/Meter",tags:['autodocs'],component:UI.Meter,args:{...{"value":640,"max":1000,"label":"Monthly credits","tone":"accent","size":"sm"},},argTypes:{"value":{"description":"number","table":{"type":{"summary":"number"}},"control":"number"},"max":{"description":"number","table":{"type":{"summary":"number"}},"control":"number"},"tone":{"description":"\"accent\" | \"primary\" | \"success\" | \"warning\" | \"danger\"","table":{"type":{"summary":"\"accent\" | \"primary\" | \"success\" | \"warning\" | \"danger\""}},"control":{"type":"select"},"options":["accent","primary","success","warning","danger"]},"label":{"description":"string","table":{"type":{"summary":"string"}},"control":"text"},"valueText":{"description":"string","table":{"type":{"summary":"string"}},"control":"text"},"size":{"description":"\"sm\" | \"md\"","table":{"type":{"summary":"\"sm\" | \"md\""}},"control":{"type":"select"},"options":["sm","md"]}},parameters:{docs:{source:{code:example.code,language:'tsx'},description:{component:"4px usage bar (pink accent default, on a pink-tinted track; other tones on a neutral track) with optional label and value text; role=meter.\n\nExperimental. See the documentation website for the full API and Paper guidance."}}}} satisfies Meta;
+export default meta;
+type Story=StoryObj<typeof meta>;
+export const Default:Story={render:ControlledStory};

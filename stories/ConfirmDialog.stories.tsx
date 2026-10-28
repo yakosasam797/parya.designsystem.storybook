@@ -1,0 +1,11 @@
+import type {Meta,StoryObj} from '@storybook/react-vite';
+import type {ComponentType} from 'react';
+import {useArgs} from 'storybook/preview-api';
+import * as UI from '@parya/design-system';
+import {examples} from '@parya/design-system/examples';
+const example=examples.find(e=>e.name==="ConfirmDialog")!;
+
+const meta={title:"Overlays & feedback/ConfirmDialog",tags:['autodocs'],argTypes:{"message":{"description":"string","table":{"type":{"summary":"string"}},"control":false},"confirmLabel":{"description":"string","table":{"type":{"summary":"string"}},"control":false},"cancelLabel":{"description":"string","table":{"type":{"summary":"string"}},"control":false},"onConfirm":{"description":"() => void | Promise<void>","table":{"type":{"summary":"() => void | Promise<void>"}},"control":false},"danger":{"description":"boolean","table":{"type":{"summary":"boolean"}},"control":false},"size":{"description":"\"sm\" | \"md\" | \"lg\"","table":{"type":{"summary":"\"sm\" | \"md\" | \"lg\""}},"control":false},"title":{"description":"string","table":{"type":{"summary":"string"}},"control":false},"open":{"description":"boolean","table":{"type":{"summary":"boolean"}},"control":false},"onOpenChange":{"description":"(open: boolean) => void","table":{"type":{"summary":"(open: boolean) => void"}},"control":false},"description":{"description":"string","table":{"type":{"summary":"string"}},"control":false},"trigger":{"description":"ReactNode","table":{"type":{"summary":"ReactNode"}},"control":false}},parameters:{controls:{disable:true},docs:{source:{code:example.code,language:'tsx'},description:{component:"Small alert dialog asking the user to confirm one action: title question, consequence, Cancel + danger/primary confirm. Awaits an async onConfirm with a loading button and blocks dismissal until it settles.\n\nExperimental. See the documentation website for the full API and Paper guidance."}}}} satisfies Meta;
+export default meta;
+type Story=StoryObj<typeof meta>;
+export const Default:Story={render:()=> <example.Demo/>};

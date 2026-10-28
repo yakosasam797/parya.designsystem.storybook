@@ -1,0 +1,12 @@
+import type {Meta,StoryObj} from '@storybook/react-vite';
+import type {ComponentType} from 'react';
+import {useArgs} from 'storybook/preview-api';
+import * as UI from '@parya/design-system';
+import {examples} from '@parya/design-system/examples';
+const example=examples.find(e=>e.name==="RadioGroup")!;
+const Component=UI.RadioGroup as unknown as ComponentType<Record<string,unknown>>;
+function ControlledStory(){const [args,update]=useArgs();return <Component {...args} onValueChange={(value:unknown)=>update({value})} onCheckedChange={(checked:boolean)=>update({checked})} onCountryCodeChange={(countryCode:string)=>update({countryCode})} onPageChange={(page:number)=>update({page})}/>}
+const meta={title:"Primitives/RadioGroup",tags:['autodocs'],component:UI.RadioGroup,args:{...{"value":"hotel","options":[{"value":"hotel","label":"Hotel"},{"value":"transport","label":"Transport"},{"value":"activity","label":"Activity"}],"aria-label":"Service type","orientation":"vertical","disabled":false},onValueChange:()=>{}},argTypes:{"value":{"description":"string","table":{"type":{"summary":"string"}},"control":"text"},"onValueChange":{"description":"(value: string) => void","table":{"type":{"summary":"(value: string) => void"}},"control":false},"options":{"description":"{\n    value: string;\n    label: string;\n    description?: string;\n    disabled?: boolean;\n  }[]","table":{"type":{"summary":"{\n    value: string;\n    label: string;\n    description?: string;\n    disabled?: boolean;\n  }[]"}},"control":"boolean"},"orientation":{"description":"\"vertical\" | \"horizontal\"","table":{"type":{"summary":"\"vertical\" | \"horizontal\""}},"control":{"type":"select"},"options":["vertical","horizontal"]},"aria-label":{"description":"string","table":{"type":{"summary":"string"}},"control":"text"},"disabled":{"control":"boolean"}},parameters:{docs:{source:{code:example.code,language:'tsx'},description:{component:"Single choice from a short, always-visible list of options, each with optional description.\n\nExperimental. See the documentation website for the full API and Paper guidance."}}}} satisfies Meta;
+export default meta;
+type Story=StoryObj<typeof meta>;
+export const Default:Story={render:ControlledStory};
