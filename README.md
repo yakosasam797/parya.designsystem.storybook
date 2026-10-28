@@ -21,10 +21,13 @@ npm run storybook
 
 Open http://127.0.0.1:6008/. Requires Node.js 22.12+.
 
+Browser tests serve the static build on port 6009 so they can run while the interactive preview stays open on 6008.
+
 ## Included
 
-- 81 component documentation groups backed by the same library as the website.
-- Real prop controls for 52 components, with controlled interactions reflected in Storybook args.
+- 92 code references backed by the same library as the website, including utility demonstrations.
+- Real prop controls for 56 components, with controlled interactions reflected in Storybook args.
+- Filter and sort variants, a combined vendor-list workflow, and type-checked collection source snippets shared with the documentation website.
 - Composed examples for components that require application behavior or children.
 - Light/dark theme toolbar, viewport tools, accessibility panel, and source snippets.
 - Generated story files and API table types sourced from the code repository's TypeScript metadata.
