@@ -3,6 +3,7 @@ import type {ComponentType} from 'react';
 import {useArgs} from 'storybook/preview-api';
 import * as UI from '@parya/design-system';
 import {examples} from '@parya/design-system/examples';
+
 const example=examples.find(e=>e.name==="SortMenu")!;
 const Component=UI.SortMenu as unknown as ComponentType<Record<string,unknown>>;
 function ControlledStory(){const [args,update]=useArgs();return <Component {...args} onValueChange={(value:unknown)=>update({value})} onCheckedChange={(checked:boolean)=>update({checked})} onCountryCodeChange={(countryCode:string)=>update({countryCode})} onPageChange={(page:number)=>update({page})}/>}
@@ -10,5 +11,6 @@ const meta={title:"Tables & collections/SortMenu",tags:['autodocs'],component:UI
 export default meta;
 type Story=StoryObj<typeof meta>;
 export const Default:Story={render:ControlledStory};
+
 export const Compact:Story={args:{compact:true},render:ControlledStory};
 export const Disabled:Story={args:{disabled:true},render:ControlledStory};

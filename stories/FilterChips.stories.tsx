@@ -3,6 +3,7 @@ import type {ComponentType} from 'react';
 import {useArgs} from 'storybook/preview-api';
 import * as UI from '@parya/design-system';
 import {examples} from '@parya/design-system/examples';
+
 const example=examples.find(e=>e.name==="FilterChips")!;
 const Component=UI.FilterChips as unknown as ComponentType<Record<string,unknown>>;
 function ControlledStory(){const [args,update]=useArgs();return <Component {...args} onValueChange={(value:unknown)=>update({value})} onCheckedChange={(checked:boolean)=>update({checked})} onCountryCodeChange={(countryCode:string)=>update({countryCode})} onPageChange={(page:number)=>update({page})}/>}
@@ -10,4 +11,5 @@ const meta={title:"Tables & collections/FilterChips",tags:['autodocs'],component
 export default meta;
 type Story=StoryObj<typeof meta>;
 export const Default:Story={render:ControlledStory};
+
 export const Empty:Story={args:{value:{}},render:ControlledStory};

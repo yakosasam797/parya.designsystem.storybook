@@ -25,7 +25,8 @@ Browser tests serve the static build on port 6009 so they can run while the inte
 
 ## Included
 
-- 92 code references backed by the same library as the website, including utility demonstrations.
+- 95 code references backed by the same library as the website, including utility demonstrations.
+- AppShell, Sidebar, and Topbar examples use the shared Paper-based application frame. The AppShell story includes an expanded layout and a collapsed rail variant; the website also has a full-page travel workspace at `/#/examples/app-shell`.
 - Real prop controls for 56 components, with controlled interactions reflected in Storybook args.
 - Foundation stories expose all 20 typography roles and the semantic color pairs from the packaged catalog; theme controls use the same shipped CSS as the website.
 - Filter and sort variants, a combined vendor-list workflow, and type-checked collection source snippets shared with the documentation website.

@@ -53,6 +53,7 @@ import type {ComponentType} from 'react';
 import {useArgs} from 'storybook/preview-api';
 import * as UI from '@parya/design-system';
 import {examples} from '@parya/design-system/examples';
+${c.name === "AppShell" ? "import {AppShellDemo} from '@parya/design-system/examples';" : ""}
 const example=examples.find(e=>e.name===${JSON.stringify(c.name)})!;
 ${
   args
@@ -64,6 +65,7 @@ const meta={title:${JSON.stringify(c.category + "/" + c.name)},tags:['autodocs']
 export default meta;
 type Story=StoryObj<typeof meta>;
 export const Default:Story={render:${args ? "ControlledStory" : "()=> <example.Demo/>"}};
+${c.name === "AppShell" ? "export const Collapsed:Story={render:()=> <AppShellDemo defaultCollapsed/>};\n" : ""}
 ${["FilterMenu", "SortMenu"].includes(c.name) ? "export const Compact:Story={args:{compact:true},render:ControlledStory};\nexport const Disabled:Story={args:{disabled:true},render:ControlledStory};\n" : ""}${c.name === "FilterMenu" ? "export const AllFilterModes:Story={render:()=> <example.Demo/>};\n" : ""}${c.name === "FilterChips" ? "export const Empty:Story={args:{value:{}},render:ControlledStory};\n" : ""}
 ${c.name === "Button" ? "export const Loading:Story={args:{loading:true},render:ControlledStory};\nexport const Disabled:Story={args:{disabled:true},render:ControlledStory};\nexport const AllVariants:Story={render:()=> <example.Demo/>};\n" : ""}${c.name === "TextField" ? "export const Error:Story={args:{error:'Traveler name is required.',value:''},render:ControlledStory};\nexport const Disabled:Story={args:{disabled:true},render:ControlledStory};\n" : ""}`;
   await writeFile(`stories/${c.name}.stories.tsx`, source.trimEnd() + "\n");
