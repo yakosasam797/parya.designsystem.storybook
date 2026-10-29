@@ -2,6 +2,10 @@
 
 This is the private Storybook application. Its versions are separate from published component-package releases.
 
+## 0.3.1 · 2026-10-29
+
+- Updated to @parya/design-system 0.3.1 with the corrected full horizontal wordmark including P.
+
 ## 0.3.0 · 2026-10-29
 
 - Application shell, navigation and keyboard selection examples.
